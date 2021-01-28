@@ -1,59 +1,38 @@
 {
-  "_from": "homebridge-pioneer-vsx-527",
-  "_inBundle": false,
-  "_integrity": "sha512-R0gb2k6TJE9tB9qe9Ivvq95f2tMUo3J1RD2z0WugkQHq//QVw45gFlI/ngjsV6IAkxdOaZLKKFbXUgUeYM/tXg==",
-  "_location": "/homebridge-pioneer-avr",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "tag",
-    "registry": true,
-    "raw": "homebridge-pioneer-avr",
-    "name": "homebridge-pioneer-avr",
-    "escapedName": "homebridge-pioneer-avr",
-    "rawSpec": "",
-    "saveSpec": null,
-    "fetchSpec": "latest"
+  "name": "@drlocoh/homebridge-pioneer-vsx527",
+  "version": "0.2.4",
+  "description": "Based 99% on https://github.com/kazcangi/homebridge-pioneer-avr",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "_requiredBy": [
-    "#USER"
-  ],
-  "_resolved": "https://registry.npmjs.org/homebridge-pioneer-avr/-/homebridge-pioneer-avr-0.8.1.tgz",
-  "_shasum": "352456726d971b7fcf14d09d4a0ae1a18f1a8861",
-  "_spec": "homebridge-pioneer-avr",
-  "_where": "/Volumes/CaseSensitiveVolume/dev/edgeware/orc/deploy",
-  "author": "martinalmlof",
-  "dependencies": {
-    "deasync": "",
-    "fs": "",
-    "mkdirp": "",
-    "net": "",
-    "persist-path": "",
-    "request": "",
-    "rwlock": ""
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martinalmlof/homebridge-pioneer-vsx527.git"
   },
-  "deprecated": false,
-  "description": "Pioneer AVR plugin for homebridge: https://github.com/nfarina/homebridge",
-  "engines": {
-    "homebridge": ">=0.4.49",
-    "node": ">=0.12.0"
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/martinalmlof/homebridge-pioneer-vsx527/issues"
   },
-  "homepage": "https://github.com/kazcangi/homebridge-pioneer-avr#readme",
+  "homepage": "https://github.com/martinalmlof/homebridge-pioneer-vsx527#readme",
   "keywords": [
     "homebridge-plugin",
     "pioneer",
     "tv",
     "avr"
   ],
-  "license": "MIT",
-  "name": "homebridge-pioneer-vsx527",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/kazcangi/homebridge-pioneer-avr.git"
+  "engines": {
+    "homebridge": ">=0.4.49",
+    "node": ">=0.12.0"
   },
-  "version": "0.0.1",
-  "main": "index.js",
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "dependencies": {
+    "deasync": "^0.1.21",
+    "fs": "0.0.1-security",
+    "mkdirp": "^1.0.4",
+    "net": "^1.0.2",
+    "persist-path": "^1.0.2",
+    "request": "^2.88.2",
+    "rwlock": "^5.0.0"
   }
 }

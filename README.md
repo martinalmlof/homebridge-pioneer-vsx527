@@ -1,8 +1,10 @@
 # homebridge-pioneer-avr [![npm version](https://badge.fury.io/js/homebridge-pioneer-avr.svg)](https://badge.fury.io/js/homebridge-pioneer-avr)
 
-homebridge-pioneer-avr is a plugin made for [homebridge](https://github.com/nfarina/homebridge),
+Based 99% on https://github.com/kazcangi/homebridge-pioneer-avr
+
+homebridge-pioneer-vsx527 is a plugin made for [homebridge](https://github.com/nfarina/homebridge),
 which declare your Pioneer AVR as a TV in homekit (iOS 12.2 needed).
-It should work with Pioneer AVRs supported by the iControl AV5 App. It works well with my VSX-922.
+It's a specialization of https://github.com/kazcangi/homebridge-pioneer-avr#readme for my VSX-527
 
 ## Features
 
@@ -27,17 +29,17 @@ Declare your AVR as a homekit TV :
 ```json
 "accessories": [
 	{
-        "accessory": "pioneerAvrAccessory",
-        "model": "VSX-922",
+        "accessory": "pioneerVsx527Accessory",
+        "model": "VSX-527",
         "name": "My Pioneer AVR",
         "description": "AV Receiver",
         "host": "192.168.178.99",
-        "port": 23
+        "port": 8102
 	}
 ]
 ```
 
-*Notice: If port 23 does not work, try port 8102.
+*Notice: If port 8102 does not work, try port 23.
 
 ## Links
 

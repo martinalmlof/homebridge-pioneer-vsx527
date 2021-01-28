@@ -12,10 +12,10 @@ let Characteristic;
 module.exports = function (homebridge) {
     Service = homebridge.hap.Service;
     Characteristic = homebridge.hap.Characteristic;
-    homebridge.registerAccessory("homebridge-pioneer-avr", "pioneerAvrAccessory", pioneerAvrAccessory);
+    homebridge.registerAccessory("@drlocoh/homebridge-pioneer-vsx527", "pioneerVSX527Accessory", pioneerVSX527Accessory);
 };
 
-function pioneerAvrAccessory(log, config) {
+function pioneerVSX527Accessory(log, config) {
     // Main accessory initialization
     this.log = log;
     this.name = config.name;
@@ -55,7 +55,7 @@ function pioneerAvrAccessory(log, config) {
     this.prepareInputSourceService();
 }
 
-pioneerAvrAccessory.prototype.prepareInformationService = function() {
+pioneerVSX527Accessory.prototype.prepareInformationService = function() {
     // Set accessory informations
     this.informationService = new Service.AccessoryInformation();
     this.informationService
@@ -67,7 +67,7 @@ pioneerAvrAccessory.prototype.prepareInformationService = function() {
     this.enabledServices.push(this.informationService);
 };
 
-pioneerAvrAccessory.prototype.prepareTvService = function () {
+pioneerVSX527Accessory.prototype.prepareTvService = function () {
     // Create TV service for homekit
     const me = this;
 
@@ -97,7 +97,7 @@ pioneerAvrAccessory.prototype.prepareTvService = function () {
     this.enabledServices.push(this.tvService);
 };
 
-pioneerAvrAccessory.prototype.prepareTvSpeakerService = function () {
+pioneerVSX527Accessory.prototype.prepareTvSpeakerService = function () {
     // Create Service.TelevisionSpeaker and  associate to tvService
     this.tvSpeakerService = new Service.TelevisionSpeaker(this.name + ' Volume', 'tvSpeakerService');
     this.tvSpeakerService
@@ -122,13 +122,13 @@ pioneerAvrAccessory.prototype.prepareTvSpeakerService = function () {
     this.enabledServices.push(this.tvSpeakerService);
 };
 
-pioneerAvrAccessory.prototype.prepareInputSourceService = function () {
+pioneerVSX527Accessory.prototype.prepareInputSourceService = function () {
     // Run avr.loadInputs with addInputSourceService callback to create each input service
     this.log.info('Discovering inputs');
     this.avr.loadInputs(this.addInputSourceService.bind(this));
 };
 
-pioneerAvrAccessory.prototype.addInputSourceService = function(key) {
+pioneerVSX527Accessory.prototype.addInputSourceService = function(key) {
     // Create an inout service from the informations in avr.inputs
     const me = this;
 
@@ -182,13 +182,13 @@ pioneerAvrAccessory.prototype.addInputSourceService = function(key) {
 
 // Callback methods
 // Callbacks for InformationService
-pioneerAvrAccessory.prototype.getPowerOn = function (callback) {
+pioneerVSX527Accessory.prototype.getPowerOn = function (callback) {
     // Get AVR's power status
     this.log.info('Get power status');
     this.avr.powerStatus(callback);
 };
 
-pioneerAvrAccessory.prototype.setPowerOn = function (on, callback) {
+pioneerVSX527Accessory.prototype.setPowerOn = function (on, callback) {
     // Set power on/off
     if (on) {
         this.log.info('Power on');
@@ -201,13 +201,13 @@ pioneerAvrAccessory.prototype.setPowerOn = function (on, callback) {
     callback();
 };
 
-pioneerAvrAccessory.prototype.getActiveIdentifier = function (callback) {
+pioneerVSX527Accessory.prototype.getActiveIdentifier = function (callback) {
     // Update current unput
     this.log.info('Get input status');
     this.avr.inputStatus(callback);
 };
 
-pioneerAvrAccessory.prototype.setActiveIdentifier = function(newValue, callback) {
+pioneerVSX527Accessory.prototype.setActiveIdentifier = function(newValue, callback) {
     // Change input
     this.log.info('set active identifier %s:%s ', newValue, this.avr.inputs[newValue].id);
     this.avr.setInput(this.avr.inputs[newValue].id);
@@ -216,7 +216,7 @@ pioneerAvrAccessory.prototype.setActiveIdentifier = function(newValue, callback)
 };
 
 // Callbacks for TelevisionSpeaker service
-pioneerAvrAccessory.prototype.setVolumeSwitch = function(state, callback, isUp) {
+pioneerVSX527Accessory.prototype.setVolumeSwitch = function(state, callback, isUp) {
     // Manage volume buttons in remote control center
     if (isUp) {
         this.log.info('Volume up');
@@ -229,13 +229,13 @@ pioneerAvrAccessory.prototype.setVolumeSwitch = function(state, callback, isUp) 
     callback();
 };
 
-pioneerAvrAccessory.prototype.getMuted = function (callback) {
+pioneerVSX527Accessory.prototype.getMuted = function (callback) {
     // Get mute status
     this.log.info('Get mute status');
     this.avr.muteStatus(callback);
 };
 
-pioneerAvrAccessory.prototype.setMuted = function (mute, callback) {
+pioneerVSX527Accessory.prototype.setMuted = function (mute, callback) {
     // Set mute on/off
     if (mute) {
         this.log.info('Mute on');
@@ -248,20 +248,20 @@ pioneerAvrAccessory.prototype.setMuted = function (mute, callback) {
     callback();
 };
 
-pioneerAvrAccessory.prototype.getVolume = function (callback) {
+pioneerVSX527Accessory.prototype.getVolume = function (callback) {
     // Get volume status
     this.log.info('Get volume status');
     this.volumeStatus(callback);
 };
 
-pioneerAvrAccessory.prototype.setVolume = function (volume, callback) {
+pioneerVSX527Accessory.prototype.setVolume = function (volume, callback) {
     // Set volume status
     this.log.info('Set volume to %s', volume);
     this.avr.setVolume(volume, callback);
 };
 
 // Callback for Remote key
-pioneerAvrAccessory.prototype.remoteKeyPress = function(remoteKey, callback) {
+pioneerVSX527Accessory.prototype.remoteKeyPress = function(remoteKey, callback) {
     this.log.info('Remote key pressed : %s', remoteKey);
     switch (remoteKey) {
         case Characteristic.RemoteKey.REWIND:
@@ -310,12 +310,12 @@ pioneerAvrAccessory.prototype.remoteKeyPress = function(remoteKey, callback) {
 };
 
 
-pioneerAvrAccessory.prototype.getServices = function() {
+pioneerVSX527Accessory.prototype.getServices = function() {
     // This method is called once on startup. We need to wait for accessory to be ready
     // ie all inputs are created
     while (this.avr.isReady == false) {
         require('deasync').sleep(500);
-        this.log.debug('Waiting for pioneerAvrAccessory to be ready');
+        this.log.debug('Waiting for pioneerVSX527Accessory to be ready');
     }
 
     this.log.info('Accessory %s ready', this.name);
