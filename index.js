@@ -251,7 +251,7 @@ pioneerVSX527Accessory.prototype.setMuted = function (mute, callback) {
 pioneerVSX527Accessory.prototype.getVolume = function (callback) {
     // Get volume status
     this.log.info('Get volume status');
-    this.volumeStatus(callback);
+    this.avr.volumeStatus(callback);
 };
 
 pioneerVSX527Accessory.prototype.setVolume = function (volume, callback) {

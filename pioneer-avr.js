@@ -21,6 +21,7 @@ const inputToType = {
         '38': 2, // NETRADIO -> Characteristic.InputSourceType.TUNER
         '44': 0, // MEDIA SERVER -> Characteristic.InputSourceType.OTHER
         '45': 0, // FAVORITE -> Characteristic.InputSourceType.OTHER
+        '46': 8, // AIRPLAY -> Characteristic.InputSourceType.AIRPLAY
         '49': 0 // GAME -> Characteristic.InputSourceType.OTHER
 };
 
@@ -38,6 +39,7 @@ const inputDict = {
         '38': {'type': 2, 'name': 'NETRADIO'},     // -> Characteristic.InputSourceType.TUNER
         '44': {'type': 0, 'name': 'MEDIA SERVER'}, // -> Characteristic.InputSourceType.OTHER
         '45': {'type': 0, 'name': 'FAVORITE'},     // -> Characteristic.InputSourceType.OTHER
+        '46': {'type': 8, 'name': 'AIRPLAY'},     // -> Characteristic.InputSourceType.AIRPLAY
         '49': {'type': 0, 'name': 'GAME'},         // -> Characteristic.InputSourceType.OTHER
 };
 
